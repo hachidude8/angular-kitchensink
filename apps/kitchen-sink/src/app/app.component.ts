@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 
+
 @Component({
-  selector: 'angular-kitchen-sink-root',
-  templateUrl: './app.component.html',
+  selector: 'ks-root',
+  template: `
+    <h1>{{ title }}</h1>
+    <router-outlet></router-outlet>
+  `,
+  // templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {

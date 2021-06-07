@@ -28,6 +28,7 @@
       "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {
+      "inlineStyle": true,
       "style": "scss"
     }
   },
@@ -122,6 +123,13 @@
             "jestConfig": "apps/kitchen-sink/jest.config.js",
             "passWithNoTests": true
           }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true,
+          "style": "scss",
+          "prefix": "ks"
         }
       }
     },
