@@ -25,6 +25,9 @@
     "kitchen-sink-e2e": {
       "tags": [],
       "implicitDependencies": ["kitchen-sink"]
+    },
+    "core": {
+      "tags": []
     }
   }
 }
