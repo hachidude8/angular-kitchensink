@@ -25,7 +25,9 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "generate:fakedata": "node ./tools/json-server/generate-db.js",
+    "start:testapi": "json-server --watch ./tools/json-server/db.json"
   },
   "private": true,
   "dependencies": {
@@ -69,8 +71,10 @@
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "faker": "^5.5.3",
     "jest": "26.2.2",
     "jest-preset-angular": "8.4.0",
+    "json-server": "^0.16.3",
     "prettier": "2.2.1",
     "ts-jest": "26.5.5",
     "ts-node": "~9.1.1",
