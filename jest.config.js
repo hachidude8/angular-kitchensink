@@ -1,3 +1,7 @@
 module.exports = {
-  projects: ['<rootDir>/apps/kitchen-sink', '<rootDir>/libs/core'],
+  projects: [
+    '<rootDir>/apps/kitchen-sink',
+    '<rootDir>/libs/core',
+    '<rootDir>/libs/notification',
+  ],
 };

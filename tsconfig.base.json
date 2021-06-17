@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@aks/core": ["libs/core/src/index.ts"]
+      "@aks/core": ["libs/core/src/index.ts"],
+      "@aks/notification": ["libs/notification/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

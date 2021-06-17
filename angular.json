@@ -187,6 +187,27 @@
           "prefix": "core"
         }
       }
+    },
+    "notification": {
+      "root": "libs/notification",
+      "sourceRoot": "libs/notification/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/notification/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/notification"],
+          "options": {
+            "jestConfig": "libs/notification/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
