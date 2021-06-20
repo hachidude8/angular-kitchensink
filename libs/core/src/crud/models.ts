@@ -11,29 +11,23 @@ export class HttpEndpoint {
 
 export interface Page<T> {
   getContent(): T;
+  getPaging(): Pageable;
 }
 
 export interface Pageable {
-  isPaged(): boolean;
-
-  isUnPaged(): boolean;
-
-  hasPrevious(): boolean;
-
-  hasNext(): boolean;
-
-  getPageNumber(): number;
-
-  getPageSize(): number;
-
-  /**
-   * Creates an unpaged instance of {@link Pageable}
-   */
-  unpaged(): Pageable;
+  of(page: number): Pageable;
 
   next(): Pageable;
 
   previousOrFirst(): Pageable;
 
-  withNumber(value: number): Pageable;
+  isPaged(): boolean;
+
+  hasPrevious(): boolean;
+
+  hasNext(): boolean;
+
+  getPageIndex(): number;
+
+  getPageSize(): number;
 }

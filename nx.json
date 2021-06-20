@@ -28,12 +28,6 @@
     },
     "core": {
       "tags": []
-    },
-    "notification": {
-      "tags": []
-    },
-    "confirmation": {
-      "tags": []
     }
   }
 }
