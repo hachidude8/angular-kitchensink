@@ -37,8 +37,8 @@ export class PagedResponse<T> extends Page<T> implements PageEvent {
     return this.contents;
   }
 
-  setContents(contents: T[]): void {
-    this.contents = contents;
+  setContents(contents: T | T[]): void {
+    this.contents = Array.isArray(contents) ? contents : [contents];
   }
 
   isPaged(): boolean {
