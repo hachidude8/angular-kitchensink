@@ -1,10 +1,13 @@
+import { Query, RequestConf } from './models';
+
+
 export interface CrudService {
-  getBy(props?: Record<string, unknown>): unknown;
+  getBy(query?: Query, conf?: RequestConf): unknown;
 
-  getOneBy(props: Record<string, unknown>): unknown;
+  getOneBy(query?: Query, conf?: RequestConf): unknown;
 
-  save(datum: Record<string, unknown>): unknown;
+  save(data: unknown): unknown;
 
-  deleteBy(datum: Record<string, unknown>): unknown;
+  deleteBy(data: unknown): unknown;
 }
 

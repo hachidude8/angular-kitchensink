@@ -1,3 +1,6 @@
+import { PageEvent } from '@angular/material/paginator';
+
+
 export class HttpEndpoint {
   constructor(
     private url: string
@@ -9,25 +12,71 @@ export class HttpEndpoint {
   }
 }
 
-export interface Page<T> {
-  getContent(): T;
-  getPaging(): Pageable;
+export abstract class Page<T> {
+  abstract getContents(): T[];
+
+  abstract setContents(contents: T[]): void;
+
+  abstract isPaged(): boolean;
+
+  abstract get length(): number;
 }
 
-export interface Pageable {
-  of(page: number): Pageable;
+export class PagedResponse<T> extends Page<T> implements PageEvent {
+  constructor(
+    private contents: T[],
+    private index: number,
+    private size: number,
+    private total: number,
+    private paged = true
+  ) {
+    super();
+  }
 
-  next(): Pageable;
+  getContents(): T[] {
+    return this.contents;
+  }
 
-  previousOrFirst(): Pageable;
+  setContents(contents: T[]): void {
+    this.contents = contents;
+  }
 
-  isPaged(): boolean;
+  isPaged(): boolean {
+    return this.paged;
+  }
 
-  hasPrevious(): boolean;
+  get length(): number {
+    return this.contents?.length || 0;
+  }
 
-  hasNext(): boolean;
+  get pageIndex(): number {
+    return this.index;
+  }
 
-  getPageIndex(): number;
+  get pageSize(): number {
+    return this.size;
+  }
 
-  getPageSize(): number;
+  get previousPageIndex(): number {
+    return (this.index > 1) ? this.index - 1 : 1;
+  }
+
+  toPageEvent(): PageEvent {
+    return {
+      pageIndex: this.pageIndex - 1,
+      pageSize: this.pageSize,
+      previousPageIndex: this.previousPageIndex,
+      length: this.total,
+    };
+  }
 }
+
+export interface Query {
+  toObject(): Record<string, unknown>;
+}
+
+// General service configuration definition
+export type RequestConf = unknown;
+
+// Angular HttpClient's options definition placeholder
+export type HttpOptions = Record<string, unknown>;
