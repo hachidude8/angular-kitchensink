@@ -3,13 +3,19 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'ks-root',
+  styleUrls: ['./app.component.scss'],
   template: `
-    <h1>{{ title }}</h1>
+    <mat-toolbar>
+      <span>{{ title }}</span>
+      <span class="spacer"></span>
+      <div>
+        <a mat-button [routerLink]="['home']">Home</a>
+        <a mat-button [routerLink]="['users']">Users</a>
+      </div>
+    </mat-toolbar>
     <router-outlet></router-outlet>
   `,
-  // templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'kitchen-sink';
+  title = 'Kitchen Sink demo';
 }
