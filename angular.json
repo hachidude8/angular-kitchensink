@@ -28,8 +28,8 @@
       "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {
-      "inlineStyle": true,
-      "style": "scss"
+      "style": "scss",
+      "inlineStyle": true
     }
   },
   "projects": {
@@ -185,6 +185,31 @@
           "inlineStyle": true,
           "style": "scss",
           "prefix": "core"
+        }
+      }
+    },
+    "api-jsonserver": {
+      "projectType": "library",
+      "root": "libs/api-jsonserver",
+      "sourceRoot": "libs/api-jsonserver/src",
+      "prefix": "angular-kitchen-sink",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api-jsonserver"],
+          "options": {
+            "jestConfig": "libs/api-jsonserver/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/api-jsonserver/src/**/*.ts",
+              "libs/api-jsonserver/src/**/*.html"
+            ]
+          }
         }
       }
     }
