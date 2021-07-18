@@ -7,14 +7,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { UserDetailsPage, UserListPage } from './components';
+import { LoadersModule } from '../../gui/loaders/loaders.module';
+import { UserEditorComponent, UserFilterComponent, UserListComponent } from './components';
+import { UserDetailsPageComponent, UserListPageComponent } from './pages';
 import { UserRoutingModule } from './user-routing.module';
 
 
 @NgModule({
   declarations: [
-    UserDetailsPage,
-    UserListPage
+    UserDetailsPageComponent,
+    UserListPageComponent,
+    UserEditorComponent,
+    UserListComponent,
+    UserFilterComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +30,8 @@ import { UserRoutingModule } from './user-routing.module';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    LoadersModule
   ]
 })
 export class UserModule {

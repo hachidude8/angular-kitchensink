@@ -1,2 +1,3 @@
-export * from './user-details/user-details.page';
-export * from './user-list/user-list-page.component';
+export * from './user-editor/user-editor.component';
+export * from './user-filter/user-filter.component';
+export * from './user-list/user-list.component';

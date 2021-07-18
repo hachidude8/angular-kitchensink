@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row mt-5">
+    <ks-user-filter *ngIf="showFilters" class="col-12 border-bottom-1"></ks-user-filter>
+
+    <div *ngIf="!showFilters" class="col-12">
+      <button mat-button (click)="showFilters = !showFilters">Show filters</button>
+    </div>
+    <hr>
+
+    <ks-user-list class="col pt-3"></ks-user-list>
+  </div>
+</div>

@@ -6,11 +6,11 @@ import { switchMap } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'ks-user-details',
-  templateUrl: './user-details.page.html',
+  selector: 'ks-user-details-page',
+  templateUrl: './user-details-page.component.html',
   styles: []
 })
-export class UserDetailsPage implements OnInit {
+export class UserDetailsPageComponent implements OnInit {
 
   source: User | undefined;
   error: Error | undefined;
