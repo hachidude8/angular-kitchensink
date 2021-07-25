@@ -1,3 +1,4 @@
+import { NamedRoutesModule } from '@aks/core';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,7 +32,8 @@ import { UserRoutingModule } from './user-routing.module';
     MatIconModule,
     MatTooltipModule,
     MatCardModule,
-    LoadersModule
+    LoadersModule,
+    NamedRoutesModule
   ]
 })
 export class UserModule {

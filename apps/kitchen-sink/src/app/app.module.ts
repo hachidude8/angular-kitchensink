@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrudConfiguration } from './configs/crud';
 import { AppStartup } from './configs/initializer';
+import { NamedRoutesConfig } from './configs/named-routes-config';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AppStartup } from './configs/initializer';
     BrowserAnimationsModule,
     HttpClientModule,
     CrudConfiguration,
+    NamedRoutesConfig,
     MatToolbarModule,
     MatButtonModule
   ],
