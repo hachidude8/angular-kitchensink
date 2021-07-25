@@ -7,12 +7,10 @@ import { ROUTES } from './tokens';
 @Pipe({ name: 'namedRoute' })
 export class NamedRoutePipe implements PipeTransform {
 
-  private readonly instance: string;
   private prevKey: string | undefined;
   private prevResult: string[] = [];
 
   constructor(@Inject(ROUTES) private routes: NamedRoutes) {
-    this.instance = 'namedRoutePipe' + Math.floor(Math.random() * 10_000);
   }
 
   /**
@@ -21,7 +19,6 @@ export class NamedRoutePipe implements PipeTransform {
    */
   transform(key: string, params?: Params): string[] {
     if (key === this.prevKey) {
-      console.info(`Reusing prev result for ${ key }`);
       return this.prevResult;
     }
 

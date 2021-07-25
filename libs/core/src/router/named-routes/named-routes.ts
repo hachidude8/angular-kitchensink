@@ -26,20 +26,16 @@ export default class NamedRoutes {
    */
   getRoute(key: string, params?: Params): string[] {
     // Get the route from storage
-    if (this.routes.has(key)) {
-      let baseRoute = this.routes.get(key) + '';
-      if (!baseRoute) {
-        throw new Error(`"${ key }" does not contain a registered value`);
-      }
-      if (params) {
-        Object.keys(params).forEach(key => baseRoute = baseRoute.replace(`:${ key }`, params[key]));
-      }
-      const val = baseRoute.split('/');
-      val.unshift('/');
-      console.info(`Getting route ${ key }`, val);
-      return val;
+    if (!this.routes.has(key)) {
+      throw new Error(`"${ key }" is not registered as a key`);
     }
-    throw new Error(`"${ key }" is not registered as a key`);
+    let baseRoute = this.routes.get(key) + '';
+    if (params) {
+      Object.keys(params).forEach(key => baseRoute = baseRoute.replace(`:${ key }`, params[key]));
+    }
+    const val = baseRoute.split('/');
+    val.unshift('/');
+    return val;
   }
 
   /**
@@ -47,13 +43,14 @@ export default class NamedRoutes {
    * @throws Invalid key-value pair
    */
   register({ key, value }: NamedRoute): void {
-    if (!key || !value) {
+    const parsedKey = key?.trim();
+    let parsedValue = value?.trim();
+    if (!parsedKey || !parsedValue) {
       throw new Error(`Must provide a valid key-value pair. Provided data was: "key: ${ key }", "value: ${ value }"`);
     }
-    let parsedValue = value.trim();
     if (parsedValue.startsWith('/')) {
       parsedValue = parsedValue.slice(1, parsedValue.length);
     }
-    this.routes.set(key.trim(), parsedValue);
+    this.routes.set(parsedKey, parsedValue);
   }
 }
