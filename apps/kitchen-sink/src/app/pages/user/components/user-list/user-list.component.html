@@ -49,6 +49,5 @@
   </table>
 
   <mat-paginator *ngIf="page" [pageSize]="page.pageSize" [pageIndex]="page.pageIndex" [length]="page.length"
-                 [pageSizeOptions]="settings.pageSizeOptions"
                  (page)="onPage($event)"></mat-paginator>
 </ng-container>

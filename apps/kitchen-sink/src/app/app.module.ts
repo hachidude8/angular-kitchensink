@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrudConfiguration } from './configs/crud';
 import { AppStartup } from './configs/initializer';
+import { PaginatorConfig } from './configs/paginator-config';
 import { NamedRoutesConfig } from './configs/named-routes-config';
 
 
@@ -24,7 +25,8 @@ import { NamedRoutesConfig } from './configs/named-routes-config';
     MatButtonModule
   ],
   providers: [
-    AppStartup
+    AppStartup,
+    PaginatorConfig
   ],
   bootstrap: [AppComponent],
 })

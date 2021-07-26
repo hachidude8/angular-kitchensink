@@ -2,7 +2,7 @@ import { NamedRoutesModule, NamedRoute } from '@aks/core';
 import { NgModule } from '@angular/core';
 
 
-const APP_ROUTES: NamedRoute[] = [
+const routes: NamedRoute[] = [
   { key: 'home', value: 'home' },
   { key: 'userList', value: 'users' },
   { key: 'userDetails', value: 'users/:id' },
@@ -10,7 +10,7 @@ const APP_ROUTES: NamedRoute[] = [
 
 
 @NgModule({
-  imports: [NamedRoutesModule.forRoot(APP_ROUTES)],
+  imports: [NamedRoutesModule.forRoot(routes)],
   exports: [NamedRoutesModule]
 })
 export class NamedRoutesConfig {

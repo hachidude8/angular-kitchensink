@@ -1,6 +1,6 @@
 import { JApiQuery, User, UserService } from '@aks/api-jsonserver';
 import { ComponentState, Page, PagedResponse } from '@aks/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,26 +12,39 @@ import { Observable, of } from 'rxjs';
   templateUrl: './user-list.component.html',
   styles: []
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnChanges {
 
   private displayedColumns: string[] = [];
   private pageDefinition: PageEvent | undefined;
+  private query: JApiQuery;
 
   // Component Settings -> Make Class
   readonly settings = {
     loadOnInit: true,
-    loadDisplayColumnsOnInit: true,
-    pageSizeOptions: [25, 50, 100]
+    loadDisplayColumnsOnInit: true
   };
   readonly state = new ComponentState('loading');
   readonly source = this.createDataSource();
 
   constructor(protected userService: UserService) {
+    this.query = JApiQuery.fromObject({ page: 1, limit: 25 });
+  }
+
+  @Input('query')
+  set setQuery(query: Partial<JApiQuery>) {
+    this.query = JApiQuery.fromObject(query);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const { setQuery } = changes;
+    if (setQuery && !setQuery.isFirstChange()) {
+      this.loadData();
+    }
   }
 
   ngOnInit(): void {
     this.preInitLoad().subscribe(
-      () => this.postInitLoad(),
+      data => this.postInitLoad(data),
       err => this.postInitLoadError(err)
     );
   }
@@ -95,16 +108,16 @@ export class UserListComponent implements OnInit {
     this.displayedColumns = columns;
   }
 
-  protected loadData(query = JApiQuery.fromObject({ page: 1, limit: 25 })): void {
+  protected loadData(query?: JApiQuery): void {
+    const appliedQuery = query || this.query;
     this.state.setState('loading');
-    this.fetchData(query).subscribe(
+    this.fetchData(appliedQuery).subscribe(
       (result) => this.afterDataLoad(result as PagedResponse<User>),
       err => this.afterDataLoadError(err)
     )
   }
 
   protected afterDataLoad(result: PagedResponse<User>): void {
-    console.info(result);
     this.setPage(result.toPageEvent());
     this.setSourceData(result.getContents());
     this.state.setState('idle');
