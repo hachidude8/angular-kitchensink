@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
-import { ConfirmActionDirective } from './directives/confirm-action.directive';
+import { ConfirmActionDirective } from './confirm-action.directive';
+import { CONFIRMATION_MESSAGE_PROVIDER, CONFIRMATION_SERVICE_PROVIDER } from './providers';
 
 
 const exported = [
@@ -12,15 +13,11 @@ const exported = [
     CommonModule
   ],
   declarations: exported,
-  exports: exported
+  exports: exported,
+  providers: [
+    CONFIRMATION_MESSAGE_PROVIDER,
+    CONFIRMATION_SERVICE_PROVIDER
+  ]
 })
 export class ConfirmationModule {
-  static forRoot(
-    service: Provider
-  ): ModuleWithProviders<ConfirmationModule> {
-    return {
-      ngModule: ConfirmationModule,
-      providers: [service]
-    }
-  }
 }

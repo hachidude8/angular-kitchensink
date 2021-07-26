@@ -1,4 +1,4 @@
-export enum Action {
+export enum Result {
   CANCEL,
   CONFIRM,
   REJECT,
