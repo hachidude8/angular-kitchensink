@@ -26,13 +26,34 @@
       "tags": [],
       "implicitDependencies": ["kitchen-sink"]
     },
-    "core": {
-      "tags": []
-    },
     "api-jsonserver": {
       "tags": []
     },
     "mat-confirmation": {
+      "tags": []
+    },
+    "core-crud": {
+      "tags": []
+    },
+    "core-notification": {
+      "tags": []
+    },
+    "core-confirmation": {
+      "tags": []
+    },
+    "core-settings": {
+      "tags": []
+    },
+    "core-cache": {
+      "tags": []
+    },
+    "core-component": {
+      "tags": []
+    },
+    "router-named-routes": {
+      "tags": []
+    },
+    "utils": {
       "tags": []
     }
   }
