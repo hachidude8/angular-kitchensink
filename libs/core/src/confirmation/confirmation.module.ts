@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ConfirmActionDirective } from './confirm-action.directive';
 import { CONFIRMATION_MESSAGE_PROVIDER, CONFIRMATION_SERVICE_PROVIDER } from './providers';
 
@@ -16,7 +16,7 @@ const exported = [
   exports: exported,
   providers: [
     CONFIRMATION_MESSAGE_PROVIDER,
-    CONFIRMATION_SERVICE_PROVIDER
+    // CONFIRMATION_SERVICE_PROVIDER
   ]
 })
 export class ConfirmationModule {

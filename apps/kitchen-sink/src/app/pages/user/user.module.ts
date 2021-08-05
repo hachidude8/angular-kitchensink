@@ -1,4 +1,5 @@
 import { NamedRoutesModule } from '@aks/core';
+import { MatConfirmationModule } from '@aks/mat-confirmation';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,7 +34,8 @@ import { UserRoutingModule } from './user-routing.module';
     MatTooltipModule,
     MatCardModule,
     LoadersModule,
-    NamedRoutesModule
+    NamedRoutesModule,
+    MatConfirmationModule
   ]
 })
 export class UserModule {

@@ -148,4 +148,11 @@ export class UserListComponent implements OnInit, OnChanges {
     this.loadData(JApiQuery.fromPageEvent(this.page as PageEvent, sort));
   }
 
+  onCancelled(data: User): void {
+    console.info(`Delete action was canceled on ${ data.id }`);
+  }
+
+  onConfirmed(data: User): void {
+    console.info(`Delete action was confirmed on ${ data.id }`);
+  }
 }

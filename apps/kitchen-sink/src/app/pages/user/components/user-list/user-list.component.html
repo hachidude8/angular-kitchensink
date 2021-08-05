@@ -41,6 +41,15 @@
            matTooltip="Open details">
           <mat-icon>loupe</mat-icon>
         </a>
+
+        <button mat-icon-button
+                matTooltip="Delete entry"
+                aksConfirmAction
+                (confirmed)="onConfirmed(element)"
+                (rejected)="onCancelled(element)"
+                (cancelled)="onCancelled(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
     </ng-container>
 

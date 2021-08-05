@@ -5,7 +5,7 @@ import { ConfirmContents } from './models';
 import { isConfirmDetails } from './utils';
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ConfirmationService {
 
   /**
