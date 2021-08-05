@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/kitchen-sink',
     '<rootDir>/libs/core',
     '<rootDir>/libs/api-jsonserver',
+    '<rootDir>/libs/mat-confirmation',
   ],
 };

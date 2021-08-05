@@ -212,6 +212,27 @@
           }
         }
       }
+    },
+    "mat-confirmation": {
+      "root": "libs/mat-confirmation",
+      "sourceRoot": "libs/mat-confirmation/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/mat-confirmation/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/mat-confirmation"],
+          "options": {
+            "jestConfig": "libs/mat-confirmation/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

@@ -1,0 +1,11 @@
+<ng-container *ngIf="data">
+  <h1 matDialogTitle>{{ data.title }}</h1>
+  <div *ngIf="data.subtitle" matDialogContent>
+    <p>{{ data.subtitle }}</p>
+  </div>
+</ng-container>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button [matDialogClose]="Result.CONFIRM">Yes</button>
+  <button mat-stroked-button color="warn" [matDialogClose]="Result.REJECT">No</button>
+</mat-dialog-actions>
