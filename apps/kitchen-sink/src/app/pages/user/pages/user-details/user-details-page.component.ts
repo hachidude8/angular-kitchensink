@@ -1,4 +1,4 @@
-import { JApiQuery, User, UserService } from '@aks/api-jsonserver';
+import { JApiQuery, User, UserService } from '@aks/api/json-server';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';

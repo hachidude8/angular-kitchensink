@@ -26,9 +26,6 @@
       "tags": [],
       "implicitDependencies": ["kitchen-sink"]
     },
-    "api-jsonserver": {
-      "tags": []
-    },
     "mat-confirmation": {
       "tags": []
     },
@@ -54,6 +51,9 @@
       "tags": []
     },
     "utils": {
+      "tags": []
+    },
+    "api-json-server": {
       "tags": []
     }
   }

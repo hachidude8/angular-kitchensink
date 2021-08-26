@@ -1,4 +1,4 @@
-import { NamedRoutesModule, NamedRoute } from '@aks/core';
+import { NamedRoute, NamedRoutesModule } from '@aks/router/named-routes';
 import { NgModule } from '@angular/core';
 
 

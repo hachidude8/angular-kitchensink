@@ -1,4 +1,4 @@
-import { ConfirmationService } from '@aks/core';
+import { ConfirmationService } from '@aks/core/confirmation';
 import { Component } from '@angular/core';
 
 

@@ -159,31 +159,6 @@
         }
       }
     },
-    "api-jsonserver": {
-      "projectType": "library",
-      "root": "libs/api-jsonserver",
-      "sourceRoot": "libs/api-jsonserver/src",
-      "prefix": "angular-kitchen-sink",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api-jsonserver"],
-          "options": {
-            "jestConfig": "libs/api-jsonserver/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/api-jsonserver/src/**/*.ts",
-              "libs/api-jsonserver/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "mat-confirmation": {
       "root": "libs/mat-confirmation",
       "sourceRoot": "libs/mat-confirmation/src",
@@ -368,6 +343,27 @@
           "outputs": ["coverage/libs/utils"],
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-json-server": {
+      "root": "libs/api/json-server",
+      "sourceRoot": "libs/api/json-server/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/json-server/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/json-server"],
+          "options": {
+            "jestConfig": "libs/api/json-server/jest.config.js",
             "passWithNoTests": true
           }
         }

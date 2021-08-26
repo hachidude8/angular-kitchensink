@@ -1,4 +1,4 @@
-import { ConfirmationModule } from '@aks/core';
+import { MatConfirmationModule } from '@aks/mat-confirmation';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HomeRoutingModule } from './home-routing.module';
@@ -10,7 +10,7 @@ import { HomePage } from './pages';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ConfirmationModule
+    MatConfirmationModule
   ]
 })
 export class HomeModule {

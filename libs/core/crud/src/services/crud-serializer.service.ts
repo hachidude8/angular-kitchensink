@@ -1,0 +1,40 @@
+import { Page } from '@aks/core/crud';
+import { Inject, Injectable } from '@angular/core';
+import { HttpOptions, Query, RequestConf } from '../models';
+import {
+  DeserializeResponseFn,
+  DeserializeResponseListFn,
+  SerializeReqOptionsFn,
+  SerializePayloadFn
+} from '../serializers';
+import { DESERIALIZE_RESPONSE, DESERIALIZE_RESPONSE_LIST, SERIALIZE_REQ_OPTIONS, SERIALIZE_PAYLOAD } from '../tokens';
+
+
+@Injectable({ providedIn: 'root' })
+export class CrudSerializerService {
+
+  constructor(
+    @Inject(DESERIALIZE_RESPONSE) protected deserializeResponseFn: DeserializeResponseFn<unknown, unknown>,
+    @Inject(DESERIALIZE_RESPONSE_LIST) protected deserializeResponseListFn: DeserializeResponseListFn<unknown, unknown>,
+    @Inject(SERIALIZE_REQ_OPTIONS) protected serializeReqOptions: SerializeReqOptionsFn,
+    @Inject(SERIALIZE_PAYLOAD) protected serializePayloadFn: SerializePayloadFn<unknown, unknown>,
+  ) {
+  }
+
+  deserialize(response: unknown): unknown {
+    return this.deserializeResponseFn(response);
+  }
+
+  deserializeList(response: unknown): Page<unknown> {
+    return this.deserializeResponseListFn(response);
+  }
+
+  serializeRequestOptions(query?: Query, config?: RequestConf): HttpOptions {
+    return this.serializeReqOptions(query, config);
+  }
+
+  serializePayload(payload: unknown): unknown {
+    return this.serializePayloadFn(payload);
+  }
+
+}

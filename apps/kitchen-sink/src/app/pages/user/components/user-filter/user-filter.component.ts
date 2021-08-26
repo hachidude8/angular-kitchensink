@@ -1,4 +1,4 @@
-import { UserService } from '@aks/api-jsonserver';
+import { UserService } from '@aks/api/json-server';
 import { Component, OnInit } from '@angular/core';
 
 

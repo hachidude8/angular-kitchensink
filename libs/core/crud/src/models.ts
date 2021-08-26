@@ -1,82 +1,21 @@
-import { PageEvent } from '@angular/material/paginator';
-
-
-export class HttpEndpoint {
-  constructor(
-    private url: string
-  ) {
-  }
-
-  getUrl(): string {
-    return this.url;
-  }
-}
-
-export abstract class Page<T> {
-  abstract getContents(): T[];
-
-  abstract setContents(contents: T[]): void;
-
-  abstract isPaged(): boolean;
-
-  abstract get length(): number;
-}
-
-export class PagedResponse<T> extends Page<T> implements PageEvent {
-  constructor(
-    private contents: T[],
-    private index: number,
-    private size: number,
-    private total: number,
-    private paged = true
-  ) {
-    super();
-  }
-
-  getContents(): T[] {
-    return this.contents;
-  }
-
-  setContents(contents: T | T[]): void {
-    this.contents = Array.isArray(contents) ? contents : [contents];
-  }
-
-  isPaged(): boolean {
-    return this.paged;
-  }
-
-  get length(): number {
-    return this.contents?.length || 0;
-  }
-
-  get pageIndex(): number {
-    return this.index;
-  }
-
-  get pageSize(): number {
-    return this.size;
-  }
-
-  get previousPageIndex(): number {
-    return (this.index > 1) ? this.index - 1 : 1;
-  }
-
-  toPageEvent(): PageEvent {
-    return {
-      pageIndex: this.pageIndex - 1,
-      pageSize: this.pageSize,
-      previousPageIndex: this.previousPageIndex,
-      length: this.total,
-    };
-  }
-}
-
-export interface Query {
-  toObject(): Record<string, unknown>;
-}
-
-// General service configuration definition
+/**
+ * Service configuration placeholder.
+ */
 export type RequestConf = unknown;
 
-// Angular HttpClient's options definition placeholder
+/**
+ * Angular {@link HttpClient} options definition placeholder.
+ */
 export type HttpOptions = Record<string, unknown>;
+
+/**
+ *  Angular {@link HttpParams} value type placeholder.
+ */
+export type HttpParamType = string | number | boolean | ReadonlyArray<string | number | boolean>;
+
+/**
+ *
+ */
+export interface Query {
+  toObject(): Record<string, HttpParamType>;
+}

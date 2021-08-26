@@ -1,4 +1,4 @@
-import { ResponseSerializer } from './response-serializer';
+import { ResponseSerializer } from './js-response-serializer';
 import { InjectionToken } from '@angular/core';
 
 

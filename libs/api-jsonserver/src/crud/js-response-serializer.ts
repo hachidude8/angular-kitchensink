@@ -1,14 +1,14 @@
-import { PagedResponse } from '@aks/core';
+import { PagedResponse, ResponseSerializer } from '@aks/core/crud';
 import { HttpResponse } from '@angular/common/http';
 import { TOTAL_ITEMS_SIZE_HEADER, PAGINATION_DETAILS_HEADER, PREV_LINK, PageValueRegex } from './constants';
 
 
-export abstract class ResponseSerializer {
-  abstract extractPagination(response: HttpResponse<unknown>): PagedResponse<unknown>;
-}
+export class JsResponseSerializer extends ResponseSerializer {
+  deserialize(response: HttpResponse<unknown>): unknown {
+    return response;
+  }
 
-export class HttpResponseSerializer extends ResponseSerializer {
-  extractPagination(response: HttpResponse<unknown>): PagedResponse<unknown> {
+  deserializeList(response: HttpResponse<unknown>): PagedResponse<unknown> {
     const { headers } = response;
     const totalSize = headers.get(TOTAL_ITEMS_SIZE_HEADER);
     const total = totalSize ? +totalSize : -1;

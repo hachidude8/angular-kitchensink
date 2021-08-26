@@ -1,4 +1,4 @@
-import { JsonServerCrudModule } from '@aks/api-jsonserver';
+import { JsonServerCrudModule } from '@aks/api/json-server';
 import { NgModule } from '@angular/core';
 
 

@@ -1,5 +1,6 @@
-import { JApiQuery, User, UserService } from '@aks/api-jsonserver';
-import { ComponentState, Page, PagedResponse } from '@aks/core';
+import { JApiQuery, User, UserService } from '@aks/api/json-server';
+import { ComponentState } from '@aks/core/component';
+import { Page, PagedResponse } from '@aks/core/crud';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';

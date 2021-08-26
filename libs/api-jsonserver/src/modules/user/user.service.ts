@@ -8,7 +8,7 @@ import { User } from './models';
 @Injectable({ providedIn: 'root' })
 export class UserService extends JsonServerApiService<User> {
   constructor(protected http: HttpClient,
-              @Inject(HTTP_SERIALIZER) protected serializer: ResponseSerializer) {
-    super(http, new HttpEndpoint('http://localhost:3000/users'), serializer);
+              @Inject(HTTP_SERIALIZER) protected responseSerializer: ResponseSerializer) {
+    super(http, new HttpEndpoint('http://localhost:3000/users'), responseSerializer);
   }
 }

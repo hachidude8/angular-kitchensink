@@ -1,30 +1,33 @@
-import { HttpEndpoint, HttpOptions, PagedResponse, RestService } from '@aks/core';
+import { HttpOptions, RestResource, PagedResponse, CrudService } from '@aks/core/crud';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ResponseSerializer } from './response-serializer';
+import { Observable, of } from 'rxjs';
 import { Entity, JApiQuery } from './models';
+import { JsResponseSerializer } from './js-response-serializer';
+import { JsRequestSerializer } from './js-request-serializer';
 import { isEntity } from './utils';
 
 
 @Injectable()
-export class JsonServerApiService<T = Entity> extends RestService {
+export class JsonServerApiService<T = Entity> {
 
   constructor(
     protected http: HttpClient,
-    protected endpoint: HttpEndpoint,
-    protected serializer: ResponseSerializer
+    protected resource: RestResource,
+    protected responseSerializer: JsResponseSerializer,
+    protected requestSerializer: JsRequestSerializer,
   ) {
-    super(http, endpoint);
+    // super(http, resource, responseSerializer, requestSerializer);
   }
 
   protected buildGetByReq(url: string, options: HttpOptions = {}): Observable<unknown> {
     options.observe = 'response';
-    return super.buildGetByReq(url, options);
+    // return super.buildGetByReq(url, options);
+    return of(undefined);
   }
 
   protected buildGetByUrl(query?: JApiQuery): string {
-    let endpoint = this.endpoint.getUrl();
+    let endpoint = this.resource.get();
     if (query && query.id) {
       endpoint += `/${ query.id }`;
     }
@@ -32,7 +35,7 @@ export class JsonServerApiService<T = Entity> extends RestService {
   }
 
   protected buildDeleteUrl(datum: T): string {
-    let endpoint = this.endpoint.getUrl();
+    let endpoint = this.resource.get();
     if (isEntity(datum)) {
       endpoint = `${ endpoint }/${ datum.id }`;
     }
@@ -40,11 +43,11 @@ export class JsonServerApiService<T = Entity> extends RestService {
   }
 
   protected buildSaveUrl(): string {
-    return this.endpoint.getUrl();
+    return this.resource.get();
   }
 
-  protected serializeGetByResult(response: HttpResponse<T[]>): PagedResponse<T[]> {
-    const page = this.serializer.extractPagination(response);
+  protected deserializeGetByResultToPage(response: HttpResponse<T[]>): PagedResponse<T[]> {
+    const page = this.responseSerializer.deserializeList(response);
     page.setContents(response.body || []);
     return page as PagedResponse<T[]>;
   }
