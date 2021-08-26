@@ -1,4 +1,4 @@
-import { ConfirmDetails, Result } from '@aks/core';
+import { ConfirmDetails, Result } from '@aks/core/confirmation';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 

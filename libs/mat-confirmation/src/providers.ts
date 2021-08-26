@@ -1,4 +1,4 @@
-import { ConfirmationService } from '@aks/core';
+import { ConfirmationService } from '@aks/core/confirmation';
 import { Optional, Provider, SkipSelf } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatConfirmationService } from './mat-confirmation.service';

@@ -1,4 +1,4 @@
-import { ConfirmationModule } from '@aks/core';
+import { ConfirmationModule } from '@aks/core/confirmation';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';

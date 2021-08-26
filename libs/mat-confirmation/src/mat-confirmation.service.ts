@@ -1,4 +1,10 @@
-import { ConfirmationResult, ConfirmationService, ConfirmContents, isConfirmDetails, Result } from '@aks/core';
+import {
+  ConfirmationResult,
+  ConfirmationService,
+  ConfirmContents,
+  isConfirmDetails,
+  Result
+} from '@aks/core/confirmation';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
