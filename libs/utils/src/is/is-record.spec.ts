@@ -19,6 +19,20 @@ describe('isRecord', () => {
     expect(isRecord(null)).toBeFalsy();
   });
 
+  it('Array should not be a record', () => {
+    expect(isRecord(null)).toBeFalsy();
+  });
+
+  it('File should not be a record', () => {
+    const file = new File([''], 'text.txt', { type: 'text/html' });
+    expect(isRecord(file)).toBeFalsy();
+  });
+
+  it('Blob should not be a record', () => {
+    const blob = new Blob([''], { type: "text/html" });
+    expect(isRecord(blob)).toBeFalsy();
+  });
+
   it('Undefined should not be a record', () => {
     expect(isRecord(undefined)).toBeFalsy();
   });
