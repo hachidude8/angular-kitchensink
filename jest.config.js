@@ -11,5 +11,6 @@ module.exports = {
     '<rootDir>/libs/router/named-routes',
     '<rootDir>/libs/utils',
     '<rootDir>/libs/api/json-server',
+    '<rootDir>/libs/core/files',
   ],
 };

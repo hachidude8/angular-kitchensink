@@ -19,6 +19,30 @@
     }
   },
   "projects": {
+    "api-json-server": {
+      "tags": []
+    },
+    "core-cache": {
+      "tags": []
+    },
+    "core-component": {
+      "tags": []
+    },
+    "core-confirmation": {
+      "tags": []
+    },
+    "core-crud": {
+      "tags": []
+    },
+    "core-files": {
+      "tags": []
+    },
+    "core-notification": {
+      "tags": []
+    },
+    "core-settings": {
+      "tags": []
+    },
     "kitchen-sink": {
       "tags": []
     },
@@ -29,31 +53,10 @@
     "mat-confirmation": {
       "tags": []
     },
-    "core-crud": {
-      "tags": []
-    },
-    "core-notification": {
-      "tags": []
-    },
-    "core-confirmation": {
-      "tags": []
-    },
-    "core-settings": {
-      "tags": []
-    },
-    "core-cache": {
-      "tags": []
-    },
-    "core-component": {
-      "tags": []
-    },
     "router-named-routes": {
       "tags": []
     },
     "utils": {
-      "tags": []
-    },
-    "api-json-server": {
       "tags": []
     }
   }

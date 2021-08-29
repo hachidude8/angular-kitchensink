@@ -15,16 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@aks/mat-confirmation": ["libs/mat-confirmation/src/index.ts"],
-      "@aks/core/crud": ["libs/core/crud/src/index.ts"],
-      "@aks/core/notification": ["libs/core/notification/src/index.ts"],
-      "@aks/core/confirmation": ["libs/core/confirmation/src/index.ts"],
-      "@aks/core/settings": ["libs/core/settings/src/index.ts"],
+      "@aks/api/json-server": ["libs/api/json-server/src/index.ts"],
       "@aks/core/cache": ["libs/core/cache/src/index.ts"],
       "@aks/core/component": ["libs/core/component/src/index.ts"],
+      "@aks/core/confirmation": ["libs/core/confirmation/src/index.ts"],
+      "@aks/core/crud": ["libs/core/crud/src/index.ts"],
+      "@aks/core/notification": ["libs/core/notification/src/index.ts"],
+      "@aks/core/settings": ["libs/core/settings/src/index.ts"],
+      "@aks/mat-confirmation": ["libs/mat-confirmation/src/index.ts"],
       "@aks/router/named-routes": ["libs/router/named-routes/src/index.ts"],
       "@aks/utils": ["libs/utils/src/index.ts"],
-      "@aks/api/json-server": ["libs/api/json-server/src/index.ts"]
+      "@aks/core/files": ["libs/core/files/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
