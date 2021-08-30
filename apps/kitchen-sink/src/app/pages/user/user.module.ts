@@ -1,4 +1,4 @@
-import { MatConfirmationModule } from '@aks/mat-confirmation';
+import { MatConfirmationModule } from '@aks/mat/confirmation';
 import { NamedRoutesModule } from '@aks/router/named-routes';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -10,10 +10,13 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoadersModule } from '../../gui/loaders/loaders.module';
-import { UserEditorComponent, UserFilterComponent, UserListComponent } from './components';
+import {
+  UserEditorComponent,
+  UserFilterComponent,
+  UserListComponent,
+} from './components';
 import { UserDetailsPageComponent, UserListPageComponent } from './pages';
 import { UserRoutingModule } from './user-routing.module';
-
 
 @NgModule({
   declarations: [
@@ -21,7 +24,7 @@ import { UserRoutingModule } from './user-routing.module';
     UserListPageComponent,
     UserEditorComponent,
     UserListComponent,
-    UserFilterComponent
+    UserFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -35,8 +38,7 @@ import { UserRoutingModule } from './user-routing.module';
     MatCardModule,
     LoadersModule,
     NamedRoutesModule,
-    MatConfirmationModule
-  ]
+    MatConfirmationModule,
+  ],
 })
-export class UserModule {
-}
+export class UserModule {}

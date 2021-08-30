@@ -1,7 +1,7 @@
 module.exports = {
   projects: [
     '<rootDir>/apps/kitchen-sink',
-    '<rootDir>/libs/mat-confirmation',
+    '<rootDir>/libs/mat/confirmation',
     '<rootDir>/libs/core/crud',
     '<rootDir>/libs/core/notification',
     '<rootDir>/libs/core/confirmation',
