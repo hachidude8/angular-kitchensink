@@ -12,5 +12,6 @@ module.exports = {
     '<rootDir>/libs/utils',
     '<rootDir>/libs/api/json-server',
     '<rootDir>/libs/core/files',
+    '<rootDir>/libs/mat/snackbar-notification',
   ],
 };

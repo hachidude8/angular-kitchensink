@@ -348,6 +348,27 @@
         }
       }
     },
+    "mat-snackbar-notification": {
+      "root": "libs/mat/snackbar-notification",
+      "sourceRoot": "libs/mat/snackbar-notification/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/mat/snackbar-notification/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/mat/snackbar-notification"],
+          "options": {
+            "jestConfig": "libs/mat/snackbar-notification/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "router-named-routes": {
       "root": "libs/router/named-routes",
       "sourceRoot": "libs/router/named-routes/src",

@@ -53,6 +53,9 @@
     "mat-confirmation": {
       "tags": []
     },
+    "mat-snackbar-notification": {
+      "tags": []
+    },
     "router-named-routes": {
       "tags": []
     },

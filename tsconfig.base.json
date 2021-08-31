@@ -23,11 +23,10 @@
       "@aks/core/files": ["libs/core/files/src/index.ts"],
       "@aks/core/notification": ["libs/core/notification/src/index.ts"],
       "@aks/core/settings": ["libs/core/settings/src/index.ts"],
+      "@aks/mat/confirmation": ["libs/mat/confirmation/src/index.ts"],
+      "@aks/mat/snackbar-notification": ["libs/mat/snackbar-notification/src/index.ts"],
       "@aks/router/named-routes": ["libs/router/named-routes/src/index.ts"],
-      "@aks/utils": ["libs/utils/src/index.ts"],
-      "@aks/mat/confirmation": [
-        "libs/mat/confirmation/src/index.ts"
-      ]
+      "@aks/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
