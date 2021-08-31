@@ -10,13 +10,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoadersModule } from '../../gui/loaders/loaders.module';
-import {
-  UserEditorComponent,
-  UserFilterComponent,
-  UserListComponent,
-} from './components';
+import { UserEditorComponent, UserFilterComponent, UserListComponent, } from './components';
 import { UserDetailsPageComponent, UserListPageComponent } from './pages';
 import { UserRoutingModule } from './user-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -41,4 +38,5 @@ import { UserRoutingModule } from './user-routing.module';
     MatConfirmationModule,
   ],
 })
-export class UserModule {}
+export class UserModule {
+}

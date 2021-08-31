@@ -3,7 +3,7 @@
     <ks-user-filter *ngIf="showFilters" class="col-12 border-bottom-1"></ks-user-filter>
 
     <div *ngIf="!showFilters" class="col-12">
-      <button mat-button (click)="showFilters = !showFilters">Show filters</button>
+      <button mat-button (click)="toggleFilters()">Show filters</button>
     </div>
     <hr>
 

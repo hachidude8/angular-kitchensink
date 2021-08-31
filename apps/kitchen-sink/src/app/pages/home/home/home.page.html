@@ -4,7 +4,9 @@
       <h1>{{ message.title }}</h1>
       <h2>{{ message.subtitle }}</h2>
     </div>
-    <button aksConfirmAction="Confirm this shit!">Confirm this</button>
-    <button (click)="confirm()">Other shit</button>
+    <button mat-stroked-button aksConfirmAction="Confirm this shit!">Confirm this</button>
+    <button mat-stroked-button (click)="confirm()">Other shit</button>
+    <br>
+    <button mat-button (click)="notify()">Show notification</button>
   </div>
 </div>

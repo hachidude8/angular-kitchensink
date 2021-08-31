@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { CrudConfiguration } from './configs/crud';
 import { AppStartup } from './configs/initializer';
 import { NamedRoutesConfig } from './configs/named-routes-config';
+import { NotificationConfig } from './configs/notification-config';
 import { PaginatorConfig } from './configs/paginator-config';
 
 
@@ -22,11 +23,13 @@ import { PaginatorConfig } from './configs/paginator-config';
     CrudConfiguration,
     NamedRoutesConfig,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    NotificationConfig
   ],
   providers: [
     AppStartup,
     PaginatorConfig,
+
   ],
   bootstrap: [AppComponent],
 })
