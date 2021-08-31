@@ -1,9 +1,8 @@
-import { ComponentType } from '@angular/cdk/overlay';
-import { Injectable, TemplateRef } from '@angular/core';
-import { NotificationConfig } from './models';
+import { Injectable } from '@angular/core';
+import { NotificationConfig, NotificationDetails } from './models';
 
 
 @Injectable()
 export abstract class NotificationService {
-  abstract show(contents: string | TemplateRef<unknown> | ComponentType<unknown>, config: NotificationConfig): Promise<unknown>;
+  abstract show(contents: NotificationDetails, config?: NotificationConfig): Promise<unknown>;
 }
