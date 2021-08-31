@@ -13,5 +13,6 @@ module.exports = {
     '<rootDir>/libs/api/json-server',
     '<rootDir>/libs/core/files',
     '<rootDir>/libs/mat/snackbar-notification',
+    '<rootDir>/libs/security/authentication',
   ],
 };

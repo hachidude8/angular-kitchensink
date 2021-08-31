@@ -26,7 +26,8 @@
       "@aks/mat/confirmation": ["libs/mat/confirmation/src/index.ts"],
       "@aks/mat/snackbar-notification": ["libs/mat/snackbar-notification/src/index.ts"],
       "@aks/router/named-routes": ["libs/router/named-routes/src/index.ts"],
-      "@aks/utils": ["libs/utils/src/index.ts"]
+      "@aks/utils": ["libs/utils/src/index.ts"],
+      "@aks/security/authentication": ["libs/security/authentication/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

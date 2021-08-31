@@ -59,6 +59,9 @@
     "router-named-routes": {
       "tags": []
     },
+    "security-authentication": {
+      "tags": []
+    },
     "utils": {
       "tags": []
     }

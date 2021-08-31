@@ -390,6 +390,27 @@
         }
       }
     },
+    "security-authentication": {
+      "root": "libs/security/authentication",
+      "sourceRoot": "libs/security/authentication/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/security/authentication/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/security/authentication"],
+          "options": {
+            "jestConfig": "libs/security/authentication/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "utils": {
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
