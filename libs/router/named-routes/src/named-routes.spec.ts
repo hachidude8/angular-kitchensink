@@ -8,8 +8,8 @@ describe('NamedRoutes', () => {
   });
 
   it('Should have called "from" static factory method', () => {
-    const spy = spyOn(NamedRoutes, 'from');
-    spy([]);
+    const spy = jest.spyOn(NamedRoutes, 'from');
+    spy.mockReturnValue(NamedRoutes.from([{ key: 'test', value: '/test' }]));
     expect(spy).toHaveBeenCalled();
   });
 
