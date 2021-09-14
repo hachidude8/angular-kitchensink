@@ -1,4 +1,4 @@
-import NamedRoutes from './named-routes';
+import { NamedRoutes } from './named-routes';
 
 
 describe('NamedRoutes', () => {

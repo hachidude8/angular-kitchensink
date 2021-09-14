@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NamedRoutePipe } from './named-route.pipe';
-import NamedRoutes from './named-routes';
+import { NamedRoutes } from './named-routes';
 import { ROUTES } from './tokens';
 import { NamedRoute } from './named-route';
 

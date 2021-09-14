@@ -1,6 +1,6 @@
 import { Inject, Pipe, PipeTransform } from '@angular/core';
 import { Params } from '@angular/router';
-import NamedRoutes from './named-routes';
+import { NamedRoutes } from './named-routes';
 import { ROUTES } from './tokens';
 
 

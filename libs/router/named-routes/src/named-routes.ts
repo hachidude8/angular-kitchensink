@@ -2,7 +2,7 @@ import { Params } from '@angular/router';
 import { NamedRoute } from './named-route';
 
 
-export default class NamedRoutes {
+export class NamedRoutes {
   private readonly routes = new Map<string, string>();
 
   /**

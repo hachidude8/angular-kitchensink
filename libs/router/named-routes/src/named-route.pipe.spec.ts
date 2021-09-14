@@ -1,5 +1,5 @@
 import { NamedRoutePipe } from './named-route.pipe';
-import NamedRoutes from './named-routes';
+import { NamedRoutes } from './named-routes';
 
 
 const routes: NamedRoutes = NamedRoutes.from([
