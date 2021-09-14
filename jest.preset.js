@@ -1,3 +1,7 @@
 const nxPreset = require('@nrwl/jest/preset');
 
-module.exports = { ...nxPreset };
+
+module.exports = {
+  setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
+  ...nxPreset
+};
