@@ -14,5 +14,6 @@ module.exports = {
     '<rootDir>/libs/core/files',
     '<rootDir>/libs/mat/snackbar-notification',
     '<rootDir>/libs/security/authentication',
+    '<rootDir>/libs/security/authorization',
   ],
 };

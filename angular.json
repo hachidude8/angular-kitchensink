@@ -411,6 +411,27 @@
         }
       }
     },
+    "security-authorization": {
+      "root": "libs/security/authorization",
+      "sourceRoot": "libs/security/authorization/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/security/authorization/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/security/authorization"],
+          "options": {
+            "jestConfig": "libs/security/authorization/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "utils": {
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
