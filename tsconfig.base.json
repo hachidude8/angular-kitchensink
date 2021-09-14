@@ -14,6 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strict": true,
     "paths": {
       "@aks/api/json-server": ["libs/api/json-server/src/index.ts"],
       "@aks/core/cache": ["libs/core/cache/src/index.ts"],
