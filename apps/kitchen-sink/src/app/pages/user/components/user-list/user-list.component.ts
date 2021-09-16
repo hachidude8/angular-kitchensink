@@ -1,8 +1,7 @@
 import { JApiQuery, User, UserService } from '@aks/api/json-server';
 import { ComponentState } from '@aks/core/component';
-import { Page, PagedResponse } from '@aks/core/crud';
+import { emptyPageDetails, Page, PageDetails } from '@aks/core/crud';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, of } from 'rxjs';
@@ -16,7 +15,7 @@ import { Observable, of } from 'rxjs';
 export class UserListComponent implements OnInit, OnChanges {
 
   private displayedColumns: string[] = [];
-  private pageDefinition: PageEvent | undefined;
+  private pageDefinition: PageDetails = emptyPageDetails();
   private query: JApiQuery;
 
   // Component Settings -> Make Class
@@ -90,7 +89,7 @@ export class UserListComponent implements OnInit, OnChanges {
     return this.displayedColumns;
   }
 
-  get page(): PageEvent | undefined {
+  get page(): PageDetails {
     return this.pageDefinition;
   }
 
@@ -113,13 +112,13 @@ export class UserListComponent implements OnInit, OnChanges {
     const appliedQuery = query || this.query;
     this.state.setState('loading');
     this.fetchData(appliedQuery).subscribe(
-      (result) => this.afterDataLoad(result as PagedResponse<User>),
+      (result) => this.afterDataLoad(result),
       err => this.afterDataLoadError(err)
-    )
+    );
   }
 
-  protected afterDataLoad(result: PagedResponse<User>): void {
-    this.setPage(result.toPageEvent());
+  protected afterDataLoad(result: Page<User>): void {
+    this.setPage(result.getPageDetails());
     this.setSourceData(result.getContents());
     this.state.setState('idle');
   }
@@ -133,7 +132,7 @@ export class UserListComponent implements OnInit, OnChanges {
     return this.userService.getBy(query) as Observable<Page<User>>;
   }
 
-  protected setPage(page: PageEvent): void {
+  protected setPage(page: PageDetails): void {
     this.pageDefinition = page;
   }
 
@@ -141,19 +140,19 @@ export class UserListComponent implements OnInit, OnChanges {
     this.source.data = data;
   }
 
-  onPage(page: PageEvent): void {
+  onPage(page: PageDetails): void {
     this.loadData(JApiQuery.fromPageEvent(page));
   }
 
   onSort(sort: Sort): void {
-    this.loadData(JApiQuery.fromPageEvent(this.page as PageEvent, sort));
+    this.loadData(JApiQuery.fromPageEvent(this.page as PageDetails, sort));
   }
 
   onCancelled(data: User): void {
-    console.info(`Delete action was canceled on ${ data.id }`);
+    console.info(`Delete action was canceled on ${data.id}`);
   }
 
   onConfirmed(data: User): void {
-    console.info(`Delete action was confirmed on ${ data.id }`);
+    console.info(`Delete action was confirmed on ${data.id}`);
   }
 }

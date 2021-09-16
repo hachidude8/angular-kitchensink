@@ -1,5 +1,4 @@
-import { Query } from '@aks/core/crud';
-import { PageEvent } from '@angular/material/paginator';
+import { PageDetails, Query } from '@aks/core/crud';
 import { Sort } from '@angular/material/sort';
 
 
@@ -24,7 +23,7 @@ export class JApiQuery implements Query {
     return Object.assign(new JApiQuery(), datum);
   }
 
-  static fromPageEvent(page: PageEvent, sort?: Sort): JApiQuery {
+  static fromPageEvent(page: PageDetails, sort?: Sort): JApiQuery {
     const conf: Partial<JApiQuery> = {
       page: page.pageIndex + 1,
       limit: page.pageSize

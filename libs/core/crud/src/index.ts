@@ -2,6 +2,8 @@ export * from './services';
 export * from './crud-operations';
 export * from './models';
 export * from './page';
+export * from './page-details';
+export * from './page-impl';
 export * from './rest-resource';
 export * from './rest-resource-factory';
 export * from './serializers';
