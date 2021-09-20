@@ -13,6 +13,13 @@ export class PageImpl<T> implements Page<T> {
     return this.contents;
   }
 
+  getAt(index: number): T {
+    if (index < 0 || index > (this.contents.length - 1)) {
+      throw new Error(`Invalid contents index "${index}"`)
+    }
+    return this.contents[index];
+  }
+
   isPaged(): boolean {
     return this.page.pageIndex > -1;
   }

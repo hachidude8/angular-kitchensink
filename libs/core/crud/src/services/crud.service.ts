@@ -22,7 +22,7 @@ export abstract class CrudService implements CrudOperations {
    */
   getBy(query?: Query, config?: RequestConf): Observable<Page<unknown>> {
     return this.buildGetByReq(
-      this.getByUrl(),
+      this.getByUrl(query, config),
       this.crudSerializer.serializeRequestOptions(query, config)
     ).pipe(map(response => this.crudSerializer.deserializeList(response)));
   }
@@ -31,7 +31,7 @@ export abstract class CrudService implements CrudOperations {
     return this.fetch(url, options);
   }
 
-  protected getByUrl(): string {
+  protected getByUrl(query?: Query, config?: RequestConf): string {
     return this.httpResource.url();
   };
 
@@ -43,10 +43,11 @@ export abstract class CrudService implements CrudOperations {
   }
 
   protected deserializeGetOneByResponse(page: Page<unknown>): unknown {
-    if (!page.length) {
+    const length = page?.getPageDetails()?.length;
+    if (!length) {
       throw new Error('There is no available result for the given query');
     }
-    return page.getContents()[page.length - 1];
+    return page.getAt(length - 1);
   }
 
   protected fetch(url: string, options?: HttpOptions): Observable<unknown> {
@@ -58,7 +59,7 @@ export abstract class CrudService implements CrudOperations {
    */
   save(datum: unknown, config?: RequestConf): Observable<unknown> {
     return this.buildSaveReq(
-      this.saveUrl(),
+      this.saveUrl(datum, config),
       this.serializeSavePayload(datum),
       this.crudSerializer.serializeRequestOptions(undefined, config)
     );
@@ -68,7 +69,7 @@ export abstract class CrudService implements CrudOperations {
     return this.crudSerializer.serializePayload(datum);
   }
 
-  protected saveUrl(): string {
+  protected saveUrl(datum: unknown, config?: RequestConf): string {
     return this.httpResource.save();
   }
 
@@ -79,9 +80,9 @@ export abstract class CrudService implements CrudOperations {
   /**
    * Deletes the given data
    */
-  delete(datum: unknown): Observable<unknown> {
+  delete(datum: unknown, config?: RequestConf): Observable<unknown> {
     return this.buildDeleteByReq(
-      this.deleteUrl(datum)
+      this.deleteUrl(datum, config)
     );
   }
 
@@ -89,7 +90,7 @@ export abstract class CrudService implements CrudOperations {
     return this.http.delete(url, options);
   }
 
-  protected deleteUrl(datum: unknown): string {
+  protected deleteUrl(datum: unknown, config?: RequestConf): string {
     return this.httpResource.delete(datum);
   }
 }
