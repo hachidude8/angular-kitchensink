@@ -1,26 +1,50 @@
+import { HttpResource } from './http-resource';
+
 /**
- * REST resource definition.
+ * Extension of {@link HttpResource}.
+ * Handles specialized REST paths
  */
-export class RestResource<ID = string | number | unknown> {
-  constructor(readonly baseUrl: string,
-              readonly segment: string) {
+export class RestResource extends HttpResource {
+  constructor(
+    readonly baseUrl: string,
+    readonly segment: string,
+    readonly restSegments: RestSegments
+  ) {
+    super(baseUrl, segment);
   }
 
-  url(): string {
-    return `${ this.baseUrl }/${ this.segment }`;
+  getById(params?: Record<string | number, string | number>): string {
+    const segment = `${this.segment}/${this.restSegments.getByIdPath}`;
+    return this.serializeSegment(segment, params);
   }
 
-  getById(id: ID): string {
-    return `${ this.url() }/${ id }`;
+  save(params?: Record<string | number, string | number>): string {
+    const segment = `${this.segment}/${this.restSegments.savePath}`;
+    return this.serializeSegment(segment, params);
   }
 
-  save(): string {
-    return this.url();
+  delete(params?: Record<string | number, string | number>): string {
+    const segment = `${this.segment}/${this.restSegments.deletePath}`;
+    return this.serializeSegment(segment, params);
   }
 
-  delete(id: ID): string {
-    return `${ this.url() }/${ id }`;
+  static from(
+    baseUrl: string,
+    baseSegment: string,
+    source: Partial<RestSegments>): RestResource {
+    const segments: RestSegments = {
+      deletePath: source?.deletePath || baseSegment,
+      getByIdPath: source?.getByIdPath || baseSegment,
+      savePath: source?.savePath || baseSegment
+    };
+    return new RestResource(baseUrl, baseSegment, segments);
   }
 }
 
 export type RestResourceStorage = Map<string, RestResource>;
+
+export interface RestSegments {
+  getByIdPath: string;
+  savePath: string;
+  deletePath: string;
+}

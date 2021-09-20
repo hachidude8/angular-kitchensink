@@ -1,5 +1,6 @@
 export * from './services';
 export * from './crud-operations';
+export * from './http-resource';
 export * from './models';
 export * from './page';
 export * from './page-details';

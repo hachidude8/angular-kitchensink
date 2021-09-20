@@ -80,7 +80,7 @@ export abstract class CrudService implements CrudOperations {
   /**
    * Deletes the given data
    */
-  delete(datum: unknown, config?: RequestConf): Observable<unknown> {
+  delete(datum: Record<string, string | number>, config?: RequestConf): Observable<unknown> {
     return this.buildDeleteByReq(
       this.deleteUrl(datum, config)
     );
@@ -90,7 +90,7 @@ export abstract class CrudService implements CrudOperations {
     return this.http.delete(url, options);
   }
 
-  protected deleteUrl(datum: unknown, config?: RequestConf): string {
+  protected deleteUrl(datum: Record<string, string | number>, config?: RequestConf): string {
     return this.httpResource.delete(datum);
   }
 }
