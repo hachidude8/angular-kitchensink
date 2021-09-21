@@ -1,34 +1,37 @@
 import { NamedRoutePipe } from './named-route.pipe';
+import { createStorage } from './factories';
 import { NamedRoutes } from './named-routes';
 
 
-const routes: NamedRoutes = NamedRoutes.from([
+const routes = createStorage([
   { key: 'home', value: '/home' },
   { key: 'home-params', value: '/home/:param' }
 ]);
 
 describe('NamedRoutePipe', () => {
+  const service = new NamedRoutes(routes);
+  const pipe = new NamedRoutePipe(service);
+
   it('Should create an instance', () => {
-    const pipe = new NamedRoutePipe(routes);
     expect(pipe).toBeTruthy();
   });
 
   it('Should return segments', () => {
-    const pipe = new NamedRoutePipe(routes);
+    const result = pipe.transform('home');
     const expected = ['/', 'home'];
-    expect(pipe.transform('home')).toStrictEqual(expected);
+    expect(result).toStrictEqual(expected);
   });
 
   it('Should return segments with parsed params', () => {
-    const pipe = new NamedRoutePipe(routes);
+    const result = pipe.transform('home-params', { param: 42 });
     const expected = ['/', 'home', '42'];
-    expect(pipe.transform('home-params', { param: 42 })).toStrictEqual(expected);
+    expect(result).toStrictEqual(expected);
   });
 
   it('Should return a list of empty segments', () => {
-    const pipe = new NamedRoutePipe(routes);
-    const expected = [];
-    expect(pipe.transform('')).toStrictEqual(expected);
+    const result = pipe.transform('');
+    const expected: string[] = [];
+    expect(result).toStrictEqual(expected);
   });
 
 });

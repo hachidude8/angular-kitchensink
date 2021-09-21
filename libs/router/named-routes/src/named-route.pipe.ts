@@ -1,7 +1,7 @@
 import { Inject, Pipe, PipeTransform } from '@angular/core';
 import { Params } from '@angular/router';
 import { NamedRoutes } from './named-routes';
-import { ROUTES } from './tokens';
+import { APP_ROUTES } from './tokens';
 
 
 @Pipe({ name: 'namedRoute' })
@@ -10,7 +10,7 @@ export class NamedRoutePipe implements PipeTransform {
   private prevKey: string | undefined;
   private prevResult: string[] = [];
 
-  constructor(@Inject(ROUTES) private routes: NamedRoutes) {
+  constructor(private routes: NamedRoutes) {
   }
 
   /**

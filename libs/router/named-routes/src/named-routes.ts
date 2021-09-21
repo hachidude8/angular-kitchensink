@@ -1,22 +1,13 @@
 import { Params } from '@angular/router';
-import { NamedRoute } from './named-route';
+import { NamedRoutesStorage } from './models';
+import { Inject, Injectable } from '@angular/core';
+import { APP_ROUTES } from './tokens';
 
 
+@Injectable({ providedIn: 'root' })
 export class NamedRoutes {
-  private readonly routes = new Map<string, string>();
 
-  /**
-   * Creates a new {@link NamedRoutes} instance with the provided routes.
-   * @return NamedRoutes instance
-   * @throws Undefined routes error
-   */
-  public static from(routes: NamedRoute[]): NamedRoutes {
-    if (!routes?.length) {
-      throw new Error('Undefined routes error');
-    }
-    const namedRoutes = new NamedRoutes();
-    routes.forEach((route) => namedRoutes.register(route));
-    return namedRoutes;
+  constructor(@Inject(APP_ROUTES) private readonly routes: NamedRoutesStorage) {
   }
 
   /**
@@ -36,21 +27,5 @@ export class NamedRoutes {
     const val = baseRoute.split('/');
     val.unshift('/');
     return val;
-  }
-
-  /**
-   * Registers a new key in memory
-   * @throws Invalid key-value pair
-   */
-  register({ key, value }: NamedRoute): void {
-    const parsedKey = key?.trim();
-    let parsedValue = value?.trim();
-    if (!parsedKey || !parsedValue) {
-      throw new Error(`Must provide a valid key-value pair. Provided data was: "key: ${ key }", "value: ${ value }"`);
-    }
-    if (parsedValue.startsWith('/')) {
-      parsedValue = parsedValue.slice(1, parsedValue.length);
-    }
-    this.routes.set(parsedKey, parsedValue);
   }
 }

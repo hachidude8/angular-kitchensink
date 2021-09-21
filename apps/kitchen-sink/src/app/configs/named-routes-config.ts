@@ -1,8 +1,8 @@
-import { NamedRoute, NamedRoutesModule } from '@aks/router/named-routes';
+import { NamedRouteSource, NamedRoutesModule } from '@aks/router/named-routes';
 import { NgModule } from '@angular/core';
 
 
-const routes: NamedRoute[] = [
+const routes: NamedRouteSource[] = [
   { key: 'home', value: 'home' },
   { key: 'userList', value: 'users' },
   { key: 'userDetails', value: 'users/:id' },

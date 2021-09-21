@@ -1,8 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NamedRoutePipe } from './named-route.pipe';
-import { NamedRoutes } from './named-routes';
-import { ROUTES } from './tokens';
-import { NamedRoute } from './named-route';
+import { APP_ROUTES } from './tokens';
+import { NamedRouteSource } from './models';
+import { createStorage } from './factories';
 
 
 @NgModule({
@@ -15,12 +15,12 @@ import { NamedRoute } from './named-route';
   ]
 })
 export class NamedRoutesModule {
-  static forRoot(routes: NamedRoute[]): ModuleWithProviders<NamedRoutesModule> {
+  static forRoot(routes: NamedRouteSource[]): ModuleWithProviders<NamedRoutesModule> {
     return {
       ngModule: NamedRoutesModule,
       providers: [
-        { provide: ROUTES, useValue: NamedRoutes.from(routes) }
+        { provide: APP_ROUTES, useValue: createStorage(routes) }
       ]
-    }
+    };
   }
 }
