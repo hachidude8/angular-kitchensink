@@ -1,4 +1,5 @@
-import { Query, RequestConf } from './models';
+import { RequestConf } from './models';
+import { Query } from './query';
 
 
 export interface CrudOperations {

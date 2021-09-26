@@ -1,12 +1,39 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col">
+    <div class="col-12">
       <h1>{{ message.title }}</h1>
       <h2>{{ message.subtitle }}</h2>
     </div>
-    <button mat-stroked-button aksConfirmAction="Confirm this shit!">Confirm this</button>
-    <button mat-stroked-button (click)="confirm()">Other shit</button>
-    <br>
-    <button mat-button (click)="notify()">Show notification</button>
+
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <h4>App confirmation</h4>
+    </div>
+    <div class="col">
+      <button mat-stroked-button aksConfirmAction="Confirm this shit!">Confirm this</button>
+      <button mat-stroked-button (click)="confirm()">Other shit</button>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <h4>App notifications</h4>
+    </div>
+
+    <div class="col">
+      <button mat-stroked-button (click)="notify()">Show notification</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h4>Filters handling</h4>
+    </div>
+    <div class="col">
+      <button mat-stroked-button (click)="applyFilters()">Apply filters</button>
+      <button mat-stroked-button (click)="clearFilters()">Clear filters</button>
+    </div>
   </div>
 </div>

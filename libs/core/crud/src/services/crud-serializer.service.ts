@@ -1,6 +1,7 @@
-import { Page } from '../page';
 import { Inject, Injectable } from '@angular/core';
-import { HttpOptions, Query, RequestConf } from '../models';
+import { HttpOptions, RequestConf } from '../models';
+import { Page } from '../page';
+import { Query } from '../query';
 import {
   DeserializeResponseFn,
   DeserializeResponseListFn,

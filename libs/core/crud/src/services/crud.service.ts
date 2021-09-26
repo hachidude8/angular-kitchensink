@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CrudOperations } from '../crud-operations';
-import { HttpOptions, Query, RequestConf } from '../models';
+import { HttpOptions, RequestConf } from '../models';
 import { Page } from '../page';
+import { Query } from '../query';
 import { RestResource } from '../rest-resource';
 import { CrudSerializerService } from './crud-serializer.service';
 
