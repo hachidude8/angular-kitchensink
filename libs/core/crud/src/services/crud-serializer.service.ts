@@ -1,13 +1,14 @@
-import { Page } from '@aks/core/crud';
 import { Inject, Injectable } from '@angular/core';
-import { HttpOptions, Query, RequestConf } from '../models';
+import { HttpOptions, RequestConf } from '../models';
+import { Page } from '../page';
+import { Query } from '../query';
 import {
   DeserializeResponseFn,
   DeserializeResponseListFn,
-  SerializeReqOptionsFn,
-  SerializePayloadFn
+  SerializePayloadFn,
+  SerializeReqOptionsFn
 } from '../serializers';
-import { DESERIALIZE_RESPONSE, DESERIALIZE_RESPONSE_LIST, SERIALIZE_REQ_OPTIONS, SERIALIZE_PAYLOAD } from '../tokens';
+import { DESERIALIZE_RESPONSE, DESERIALIZE_RESPONSE_LIST, SERIALIZE_PAYLOAD, SERIALIZE_REQ_OPTIONS } from '../tokens';
 
 
 @Injectable({ providedIn: 'root' })

@@ -1,6 +1,7 @@
 export * from './services';
 export * from './crud-operations';
 export * from './models';
+export * from './query';
 export * from './page';
 export * from './rest-resource';
 export * from './rest-resource-factory';
