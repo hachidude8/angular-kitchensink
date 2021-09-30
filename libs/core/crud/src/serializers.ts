@@ -1,6 +1,7 @@
-import { HttpOptions, RequestConf } from './models';
+import { HttpOptions } from './models';
 import { Page } from './page';
 import { Query } from './query';
+import { RequestConf } from './request-conf';
 
 
 export type SerializeReqOptionsFn = (query?: Query, config?: RequestConf) => HttpOptions;
