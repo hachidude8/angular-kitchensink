@@ -1,5 +1,6 @@
 import { HttpResource } from './http-resource';
 import { HttpParamType } from './query';
+import { isRecord } from '@aks/utils';
 
 
 /**
@@ -72,4 +73,14 @@ export interface RestSegments {
   savePath: string;
   updatePath: string;
   deletePath: string;
+}
+
+/**
+ * Checks if the provided value is an instance or a type of RestResource
+ */
+export function isRestResource(value: unknown): value is RestResource {
+  if (!isRecord(value)) {
+    return false;
+  }
+  return value instanceof RestResource || !!value.restSegments;
 }
