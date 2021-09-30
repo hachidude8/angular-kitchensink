@@ -24,7 +24,7 @@ export abstract class CrudService extends BaseService {
   }
 
   connect<T>() {
-    return (this.source$.asObservable() as unknown) as Page<T>;
+    return this.source$.asObservable() as Observable<Page<T>>;
   }
 
   getBy<T>(query?: Query, config?: RequestConf): Observable<Page<T>> {
