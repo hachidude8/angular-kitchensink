@@ -1,4 +1,4 @@
-import { RequestConf } from './models';
+import { RequestConf } from './request-conf';
 import { Query } from './query';
 
 
