@@ -5,7 +5,8 @@ import { CrudOperations } from '../crud-operations';
 import { HttpOptions, RequestConf } from '../models';
 import { Page } from '../page';
 import { Query } from '../query';
-import { RestResource } from '../rest-resource';
+import { HttpResource } from '../http-resource';
+import { RestResource, isRestResource } from '../rest-resource';
 import { CrudSerializerService } from './crud-serializer.service';
 
 
@@ -14,34 +15,37 @@ export abstract class CrudService implements CrudOperations {
   protected constructor(
     protected http: HttpClient,
     protected crudSerializer: CrudSerializerService,
-    protected httpResource: RestResource,
+    protected httpResource: HttpResource
   ) {
   }
 
   /**
    * Returns a page of the requested data
    */
-  getBy(query?: Query, config?: RequestConf): Observable<Page<unknown>> {
-    return this.buildGetByReq(
+  getBy<T>(query?: Query, config?: RequestConf): Observable<Page<T>> {
+    return this.fetch<T>(
       this.getByUrl(query, config),
       this.crudSerializer.serializeRequestOptions(query, config)
-    ).pipe(map(response => this.crudSerializer.deserializeList(response)));
+    ).pipe(map(response => this.crudSerializer.deserializeList(response) as Page<T>));
   }
 
   /**
    * Returns one entry of the requested data.
    */
-  getOneBy(query?: Query, config?: RequestConf): Observable<unknown> {
-    return this.getBy(query, config).pipe(map(page => this.deserializeGetOneByResponse(page)));
+  getOneBy<T>(query?: Query, config?: RequestConf): Observable<T> {
+    return this.fetch<T>(
+      this.getOneByUrl(query, config),
+      this.crudSerializer.serializeRequestOptions(query, config)
+    ).pipe(map(response => this.crudSerializer.deserialize(response) as T));
   }
 
   /**
    * Saves the given data.
    */
-  save(datum: unknown, config?: RequestConf): Observable<unknown> {
-    return this.buildSaveReq(
+  save<T>(datum: Record<string, unknown>, config?: RequestConf): Observable<T> {
+    return this.buildSaveReq<T>(
       this.saveUrl(datum, config),
-      this.serializeSavePayload(datum),
+      this.crudSerializer.serializePayload(datum),
       this.crudSerializer.serializeRequestOptions(undefined, config)
     );
   }
@@ -49,49 +53,51 @@ export abstract class CrudService implements CrudOperations {
   /**
    * Deletes the given data
    */
-  delete(datum: Record<string, string | number>, config?: RequestConf): Observable<unknown> {
-    return this.buildDeleteByReq(
-      this.deleteUrl(datum, config)
+  delete<T>(datum: Record<string, string | number>, config?: RequestConf): Observable<T> {
+    return this.buildDeleteByReq<T>(
+      this.deleteUrl(datum),
+      this.crudSerializer.serializeRequestOptions(undefined, config)
     );
   }
 
-  protected buildGetByReq(url: string, options?: HttpOptions): Observable<unknown> {
-    return this.fetch(url, options);
+  protected fetch<T>(url: string, options?: HttpOptions): Observable<T> {
+    return this.http.get<T>(url, options);
+  }
+
+  protected buildSaveReq<T>(
+    url: string,
+    datum: unknown,
+    options?: HttpOptions): Observable<T> {
+    return this.http.post<T>(url, datum, options);
+  }
+
+  protected buildDeleteByReq<T>(
+    url: string,
+    options?: HttpOptions): Observable<T> {
+    return this.http.delete<T>(url, options);
   }
 
   protected getByUrl(query?: Query, config?: RequestConf): string {
-    return this.httpResource.url();
+    return isRestResource(this.httpResource)
+      ? this.httpResource.getAll(query?.toObject())
+      : this.httpResource.url(query?.toObject());
   };
 
-  protected deserializeGetOneByResponse(page: Page<unknown>): unknown {
-    const length = page?.getPageDetails()?.length;
-    if (!length) {
-      throw new Error('There is no available result for the given query');
-    }
-    return page.getAt(length - 1);
+  protected getOneByUrl(query?: Query, config?: RequestConf): string {
+    return isRestResource(this.httpResource)
+      ? this.httpResource.getById(query?.toObject())
+      : this.httpResource.url(query?.toObject());
   }
 
-  protected fetch(url: string, options?: HttpOptions): Observable<unknown> {
-    return this.http.get(url, options);
+  protected saveUrl(datum: Record<string, unknown>, config?: RequestConf): string {
+    return isRestResource(this.httpResource)
+      ? this.httpResource.save(datum as never)
+      : this.httpResource.url(datum as never);
   }
 
-  protected serializeSavePayload(datum: unknown): unknown {
-    return this.crudSerializer.serializePayload(datum);
-  }
-
-  protected saveUrl(datum: unknown, config?: RequestConf): string {
-    return this.httpResource.save();
-  }
-
-  protected buildSaveReq(url: string, datum: unknown, options?: HttpOptions): Observable<unknown> {
-    return this.http.post(url, datum, options);
-  }
-
-  protected buildDeleteByReq(url: string, options?: HttpOptions): Observable<unknown> {
-    return this.http.delete(url, options);
-  }
-
-  protected deleteUrl(datum: Record<string, string | number>, config?: RequestConf): string {
-    return this.httpResource.delete(datum);
+  protected deleteUrl(datum: Record<string, unknown>, config?: RequestConf): string {
+    return isRestResource(this.httpResource)
+      ? this.httpResource.delete(datum as never)
+      : this.httpResource.url(datum as never);
   }
 }
